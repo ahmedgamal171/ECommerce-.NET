@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ECommerce.Models;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 Console.WriteLine("Connection String: " + builder.Configuration.GetConnectionString("StoreConnection"));
@@ -18,7 +19,9 @@ var app = builder.Build();
 
 // Configure middleware
 app.UseStaticFiles();
-app.MapDefaultControllerRoute();
+app.MapControllerRoute("pagination",
+"Products/Page{productPage}",
+new { Controller = "Home", action = "Index" }); app.MapDefaultControllerRoute(); //Simplyfing URLs to not use query string to pass page info to the server
 SeedData.EnsurePopulated(app);
 
 app.Run();
