@@ -3,21 +3,7 @@
 
     @foreach (var product in Model?.Products?? Enumerable.Empty<Product>())
     {
-        <div class="card card-outline-primary m-1 p-3" style="">
-        <div class="bg-faded p-1" >
-            <div class="card-body">
-                    <h5 class="card-title">@product.Name
-                    <span class="badge rounded-pill bg-primary text-white"
-                          style="float:right">
-                        <small>@product.Price.ToString("c")</small>
-                    </span>
-                </h5>
-                <div class="card-text p-1">@product.Description</div>
-                <a href="/product/details/@product.ProductID" class="btn btn-primary">View Details</a>
-
-                </div>
-            </div>
-        </div>
+        <partial name="ProductSummary" model="product" />
     }
 <div  page-model="@Model?.PageInfo" page-action="Index" page-classes-enabled="true"  
      page-class="btn" page-class-normal="btn-outline-dark"
