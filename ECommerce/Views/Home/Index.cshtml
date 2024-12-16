@@ -1,7 +1,7 @@
-﻿@model IQueryable<Product>
+﻿@model ProductListViewModel
 
 <div class="row">
-    @foreach (var product in Model)
+    @foreach (var product in Model?.Products?? Enumerable.Empty<Product>())
     {
         <div class="col-md-4 mb-4">
             <div class="card" style="border-radius:20px;text-align:center">
@@ -15,4 +15,6 @@
             </div>
         </div>
     }
+    <div page-model="@Model?.PageInfo" page-action="Index"></div>
+
 </div>
