@@ -1,18 +1,41 @@
 ﻿@model Product
-<!--this is a partial-view used as a template to reduce duplication-->
-<div class="card card-outline-primary m-1 p-3" style="">
-    <div class="bg-faded p-1">
+<!-- This is a partial-view used as a template to reduce duplication -->
+<div class="card card-outline-primary m-3 p-3 shadow-sm rounded-lg" style="border: 1px solid #dee2e6;">
+    <div class="bg-light p-3 rounded-top">
         <div class="card-body">
-            <h5 class="card-title">
+            <!-- Product Name and Price -->
+            <h5 class="card-title d-flex justify-content-between align-items-center" style="font-size: 1.25rem; font-weight: bold;">
                 @Model?.Name
-                <span class="badge rounded-pill bg-primary text-white"
-                      style="float:right">
+                <span class="badge rounded-pill bg-primary text-white">
                     <small>@Model?.Price.ToString("c")</small>
                 </span>
             </h5>
-            <div class="card-text p-1">@Model?.Description</div>
-            <a href="/product/details/@Model?.ProductID" class="btn btn-primary">View Details</a>
 
+            <!-- Product Description -->
+            <div class="card-text mb-3" style="font-size: 0.875rem; color: #6c757d;">
+                @Model?.Description
+            </div>
+
+            <!-- Product Image -->
+            <div class="d-flex justify-content-center mb-3">
+                <img src="@Model?.Image" class="img-fluid rounded-lg" alt="Image with aspect ratio" style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px;">
+            </div>
+
+            <!-- View Details Button -->
+            <a href="/product/details/@Model?.ProductID" class="btn btn-primary w-100">View Details</a>
         </div>
     </div>
 </div>
+
+<!-- Add Hover Effect for Interactivity -->
+<style>
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+</style>

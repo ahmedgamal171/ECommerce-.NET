@@ -9,5 +9,6 @@ namespace ECommerce.Models
         [Column(TypeName = "decimal(8, 2)")]
         public decimal Price { get; set; }
         public string Category { get; set; } = String.Empty;
+        public string Image {  get; set; } = String.Empty;
     }
 }
